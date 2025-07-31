@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoutineMaster - Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <i class="fas fa-tasks logo-icon"></i>
+                <h1>RoutineMaster</h1>
+                <p>Controle seus hábitos, transforme sua vida</p>
+            </div>
+            
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                    <input type="email" id="email" required placeholder="seu@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password"><i class="fas fa-lock"></i> Senha</label>
+                    <input type="password" id="password" required placeholder="Sua senha">
+                    <button type="button" id="toggle-password" class="toggle-password" aria-label="Mostrar senha">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                
+                <div class="form-options">
+                    <label class="remember-me">
+                        <input type="checkbox" id="remember">
+                        <span>Lembrar de mim</span>
+                    </label>
+                    <a href="#" id="forgot-password">Esqueci minha senha</a>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-login">
+                    <i class="fas fa-sign-in-alt"></i> Entrar
+                </button>
+                
+                <div class="login-divider">
+                    <span>ou</span>
+                </div>
+                
+                <button type="button" class="btn btn-google">
+                    <i class="fab fa-google"></i> Continuar com Google
+                </button>
+                
+                <div class="register-link">
+                    Não tem uma conta? <a href="#" id="register">Cadastre-se</a>
+                </div>
+            </form>
+        </div>
+        
+        <div class="login-footer">
+            <p>&copy; 2023 RoutineMaster. Todos os direitos reservados.</p>
+            <div class="footer-links">
+                <a href="#" id="privacy-link">Privacidade</a>
+                <a href="#" id="terms-link">Termos</a>
+                <a href="#" id="contact-link">Contato</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Alternar visibilidade da senha
+            const togglePassword = document.getElementById('toggle-password');
+            const passwordInput = document.getElementById('password');
+            
+            togglePassword.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                this.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+                this.setAttribute('aria-label', type === 'password' ? 'Mostrar senha' : 'Ocultar senha');
+            });
+
+            // Formulário de login
+            const loginForm = document.getElementById('login-form');
+            
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                
+                // Validação simples
+                if (!email || !password) {
+                    Swal.fire({
+                        title: 'Campos obrigatórios',
+                        text: 'Por favor, preencha todos os campos.',
+                        icon: 'warning',
+                        confirmButtonText: 'OK'
+                    });
+                    return;
+                }
+                
+                // Simular login (em um sistema real, seria uma chamada AJAX)
+                Swal.fire({
+                    title: 'Login realizado!',
+                    text: 'Você será redirecionado para sua dashboard.',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    // Redirecionar para a página principal (simulado)
+                    window.location.href = 'dashboard.html';
+                });
+            });
+
+            // Links de rodapé
+            document.getElementById('privacy-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Política de Privacidade',
+                    html: '<p>Nós valorizamos sua privacidade. Todas as suas informações pessoais são protegidas de acordo com nossa política.</p>',
+                    icon: 'info',
+                    confirmButtonText: 'Entendi'
+                });
+            });
+            
+            document.getElementById('terms-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Termos de Serviço',
+                    html: '<p>Ao usar o RoutineMaster, você concorda com nossos termos de serviço e condições de uso.</p>',
+                    icon: 'info',
+                    confirmButtonText: 'Entendi'
+                });
+            });
+            
+            document.getElementById('contact-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Contato',
+                    html: '<p>Entre em contato conosco pelo email: <strong>contato@routinemaster.com</strong></p>',
+                    icon: 'info',
+                    confirmButtonText: 'OK'
+                });
+            });
+
+            // Link de cadastro
+            document.getElementById('register').addEventListener('click', function(e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Cadastro',
+                    html: '<p>Para se cadastrar, por favor envie um email para <strong>cadastro@routinemaster.com</strong> com seu nome e email.</p>',
+                    icon: 'info',
+                    confirmButtonText: 'OK'
+                });
+            });
+
+            // Link de esqueci senha
+            document.getElementById('forgot-password').addEventListener('click', function(e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Recuperar Senha',
+                    html: '<p>Para redefinir sua senha, por favor envie um email para <strong>suporte@routinemaster.com</strong> com o assunto "Redefinir Senha".</p>',
+                    icon: 'info',
+                    confirmButtonText: 'OK'
+                });
+            });
+
+            // Verificar modo escuro no localStorage
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.body.classList.add('dark-mode');
+            }
+        });
+    </script>
+</body>
+</html>
