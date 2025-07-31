@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoutineMaster - Controle de Hábitos</title>
+    <link rel="stylesheet" href="principal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <!-- Barra de Navegação -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-logo">
+                <i class="fas fa-tasks logo-icon"></i>
+                <span>RoutineMaster</span>
+            </a>
+            
+            <button class="navbar-toggle" id="navbar-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="navbar-menu" id="navbar-menu">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="#habits" class="nav-link active">
+                            <i class="fas fa-list-check nav-icon"></i>
+                            <span>Meus Hábitos</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#stats" class="nav-link">
+                            <i class="fas fa-chart-line nav-icon"></i>
+                            <span>Estatísticas</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#goals" class="nav-link">
+                            <i class="fas fa-bullseye nav-icon"></i>
+                            <span>Metas</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#profile" class="nav-link">
+                            <i class="fas fa-user nav-icon"></i>
+                            <span>Perfil</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <button id="dark-mode-toggle" class="dark-mode-btn">
+                            <i class="fas fa-moon nav-icon"></i>
+                            <span>Modo Escuro</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <!-- Seção de Hábitos -->
+        <section id="habits" class="page-section active-section">
+            <header class="page-header">
+                <h1><i class="fas fa-list-check"></i> Meus Hábitos</h1>
+                <button class="btn btn-primary" id="add-habit-btn">
+                    <i class="fas fa-plus"></i> Adicionar Hábito
+                </button>
+            </header>
+
+            <div class="habits-grid">
+                <!-- Hábito 1 -->
+                <div class="habit-card">
+                    <div class="habit-header">
+                        <h3><i class="fas fa-glass-water"></i> Beber Água</h3>
+                        <div class="habit-actions">
+                            <button class="btn-edit" aria-label="Editar hábito">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn-delete" aria-label="Excluir hábito">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="habit-body">
+                        <p>8 copos por dia</p>
+                        <div class="habit-progress">
+                            <progress value="5" max="8"></progress>
+                            <span>5/8</span>
+                        </div>
+                    </div>
+                    <div class="habit-footer">
+                        <button class="btn-track" data-habit="water">
+                            <i class="fas fa-check"></i> Registrar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Hábito 2 -->
+                <div class="habit-card">
+                    <div class="habit-header">
+                        <h3><i class="fas fa-dumbbell"></i> Exercícios</h3>
+                        <div class="habit-actions">
+                            <button class="btn-edit" aria-label="Editar hábito">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn-delete" aria-label="Excluir hábito">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="habit-body">
+                        <p>30 minutos diários</p>
+                        <div class="habit-progress">
+                            <progress value="4" max="7"></progress>
+                            <span>4/7 esta semana</span>
+                        </div>
+                    </div>
+                    <div class="habit-footer">
+                        <button class="btn-track" data-habit="exercise">
+                            <i class="fas fa-check"></i> Registrar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Hábito 3 -->
+                <div class="habit-card">
+                    <div class="habit-header">
+                        <h3><i class="fas fa-book"></i> Leitura</h3>
+                        <div class="habit-actions">
+                            <button class="btn-edit" aria-label="Editar hábito">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn-delete" aria-label="Excluir hábito">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="habit-body">
+                        <p>20 páginas por dia</p>
+                        <div class="habit-progress">
+                            <progress value="3" max="7"></progress>
+                            <span>3/7 esta semana</span>
+                        </div>
+                    </div>
+                    <div class="habit-footer">
+                        <button class="btn-track" data-habit="reading">
+                            <i class="fas fa-check"></i> Registrar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Estatísticas -->
+        <section id="stats" class="page-section">
+            <header class="page-header">
+                <h1><i class="fas fa-chart-line"></i> Estatísticas</h1>
+            </header>
+            
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h3>Consistência</h3>
+                    <div class="stat-value">75%</div>
+                    <div class="stat-progress">
+                        <progress value="75" max="100"></progress>
+                    </div>
+                    <p>Taxa de completamento dos hábitos</p>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Melhor Hábito</h3>
+                    <div class="stat-value"><i class="fas fa-glass-water"></i> Beber Água</div>
+                    <div class="stat-progress">
+                        <progress value="90" max="100"></progress>
+                    </div>
+                    <p>90% de completamento</p>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Dias Consecutivos</h3>
+                    <div class="stat-value">12</div>
+                    <p>Recorde atual</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Metas -->
+        <section id="goals" class="page-section">
+            <header class="page-header">
+                <h1><i class="fas fa-bullseye"></i> Metas</h1>
+                <button class="btn btn-primary" id="add-goal-btn">
+                    <i class="fas fa-plus"></i> Nova Meta
+                </button>
+            </header>
+            
+            <div class="goals-grid">
+                <div class="goal-card">
+                    <h3><i class="fas fa-medal"></i> 30 Dias de Exercícios</h3>
+                    <div class="goal-progress">
+                        <progress value="12" max="30"></progress>
+                        <span>12/30 dias (40%)</span>
+                    </div>
+                    <p>Completar 30 dias consecutivos de exercícios</p>
+                    <div class="goal-date">Prazo: 30/08/2023</div>
+                </div>
+                
+                <div class="goal-card">
+                    <h3><i class="fas fa-book-open"></i> Ler 5 Livros</h3>
+                    <div class="goal-progress">
+                        <progress value="2" max="5"></progress>
+                        <span>2/5 livros (40%)</span>
+                    </div>
+                    <p>Ler 5 livros até o final do ano</p>
+                    <div class="goal-date">Prazo: 31/12/2023</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Perfil -->
+        <section id="profile" class="page-section">
+            <header class="page-header">
+                <h1><i class="fas fa-user"></i> Perfil</h1>
+            </header>
+            
+            <div class="profile-container">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <h2>Usuário RoutineMaster</h2>
+                        <p>Membro desde: Janeiro 2023</p>
+                    </div>
+                    
+                    <div class="profile-info">
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-trophy"></i> Hábitos Ativos:</span>
+                            <span class="info-value">3</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-check-circle"></i> Completados Hoje:</span>
+                            <span class="info-value">2/3</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-fire"></i> Sequência Atual:</span>
+                            <span class="info-value">5 dias</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary" id="edit-profile-btn">
+                        <i class="fas fa-edit"></i> Editar Perfil
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal de Adicionar Hábito -->
+        <div class="modal" id="add-habit-modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2><i class="fas fa-plus"></i> Adicionar Novo Hábito</h2>
+                <form id="habit-form">
+                    <div class="form-group">
+                        <label for="habit-name"><i class="fas fa-tag"></i> Nome do Hábito</label>
+                        <input type="text" id="habit-name" required placeholder="Ex: Beber água">
+                    </div>
+                    <div class="form-group">
+                        <label for="habit-frequency"><i class="fas fa-repeat"></i> Frequência</label>
+                        <select id="habit-frequency" required>
+                            <option value="">Selecione...</option>
+                            <option value="daily">Diário</option>
+                            <option value="weekly">Semanal</option>
+                            <option value="monthly">Mensal</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="habit-target"><i class="fas fa-bullseye"></i> Meta</label>
+                        <input type="number" id="habit-target" min="1" required placeholder="Ex: 8 copos por dia">
+                    </div>
+                    <div class="form-group">
+                        <label for="habit-reminder"><i class="fas fa-bell"></i> Lembrete (opcional)</label>
+                        <input type="time" id="habit-reminder">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Salvar Hábito
+                        </button>
+                        <button type="button" class="btn btn-secondary close-modal">
+                            <i class="fas fa-times"></i> Cancelar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2023 RoutineMaster. Todos os direitos reservados.</p>
+            <div class="footer-links">
+                <a href="#" id="privacy-link">Privacidade</a>
+                <a href="#" id="terms-link">Termos</a>
+                <a href="#" id="contact-link">Contato</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript para funcionalidades do site
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle do menu mobile
+            const navbarToggle = document.getElementById('navbar-toggle');
+            const navbarMenu = document.getElementById('navbar-menu');
+            
+            navbarToggle.addEventListener('click', function() {
+                navbarMenu.classList.toggle('active');
+                this.setAttribute('aria-expanded', navbarMenu.classList.contains('active'));
+            });
+
+            // Navegação entre seções
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pageSections = document.querySelectorAll('.page-section');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove a classe active de todos os links e seções
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    pageSections.forEach(s => s.classList.remove('active-section'));
+                    
+                    // Adiciona a classe active ao link clicado
+                    this.classList.add('active');
+                    
+                    // Mostra a seção correspondente
+                    const targetId = this.getAttribute('href');
+                    document.querySelector(targetId).classList.add('active-section');
+                    
+                    // Fecha o menu mobile se estiver aberto
+                    if (navbarMenu.classList.contains('active')) {
+                        navbarMenu.classList.remove('active');
+                        navbarToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            });
+
+            // Toggle do modo escuro
+            const darkModeToggle = document.getElementById('dark-mode-toggle');
+            
+            darkModeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+                
+                // Atualiza o ícone e texto do botão
+                const icon = this.querySelector('i');
+                const text = this.querySelector('span');
+                
+                if (document.body.classList.contains('dark-mode')) {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                    text.textContent = "Modo Claro";
+                } else {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                    text.textContent = "Modo Escuro";
+                }
+            });
+
+            // Verifica preferência de modo escuro salva
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.body.classList.add('dark-mode');
+                const icon = darkModeToggle.querySelector('i');
+                const text = darkModeToggle.querySelector('span');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                text.textContent = "Modo Claro";
+            }
+
+            // Modal de adicionar hábito
+            const addHabitBtn = document.getElementById('add-habit-btn');
+            const addHabitModal = document.getElementById('add-habit-modal');
+            const closeModalBtns = document.querySelectorAll('.close-modal');
+            
+            addHabitBtn.addEventListener('click', function() {
+                addHabitModal.style.display = 'block';
+            });
+            
+            closeModalBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    addHabitModal.style.display = 'none';
+                });
+            });
+            
+            window.addEventListener('click', function(event) {
+                if (event.target === addHabitModal) {
+                    addHabitModal.style.display = 'none';
+                }
+            });
+
+            // Formulário de hábito
+            const habitForm = document.getElementById('habit-form');
+            habitForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const habitName = document.getElementById('habit-name').value;
+                const habitFrequency = document.getElementById('habit-frequency').value;
+                const habitTarget = document.getElementById('habit-target').value;
+                
+                // Validação simples
+                if (!habitName || !habitFrequency || !habitTarget) {
+                    Swal.fire({
+                        title: 'Campos obrigatórios',
+                        text: 'Por favor, preencha todos os campos obrigatórios.',
+                        icon: 'warning',
+                        confirmButtonText: 'OK'
+                    });
+                    return;
+                }
+                
+                // Feedback de sucesso
+                Swal.fire({
+                    title: 'Hábito adicionado!',
+                    text: `"${habitName}" foi adicionado aos seus hábitos.`,
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+                
+                // Fechar modal e resetar formulário
+                addHabitModal.style.display = 'none';
+                habitForm.reset();
+            });
+
+            // Botões de deletar hábito
+            const deleteButtons = document.querySelectorAll('.btn-delete');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const habitCard = this.closest('.habit-card');
+                    const habitName = habitCard.querySelector('h3').textContent;
+                    
+                    Swal.fire({
+                        title: 'Excluir hábito?',
+                        text: `Você realmente deseja excluir "${habitName}"? Esta ação não pode ser desfeita.`,
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d33',
+                        cancelButtonColor: '#3085d6',
+                        confirmButtonText: 'Sim, excluir!',
+                        cancelButtonText: 'Cancelar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            habitCard.remove();
+                            Swal.fire(
+                                'Excluído!',
+                                'Seu hábito foi removido.',
+                                'success'
+                            );
+                        }
+                    });
+                });
+            });
+
+            // Botões de registrar hábito
+            const trackButtons = document.querySelectorAll('.btn-track');
+            trackButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const habitCard = this.closest('.habit-card');
+                    const progressElement = habitCard.querySelector('progress');
+                    const progressText = habitCard.querySelector('.habit-progress span');
+                    
+                    const currentValue = parseInt(progressElement.value);
+                    const maxValue = parseInt(progressElement.max);
+                    
+                    if (currentValue < maxValue) {
+                        progressElement.value = currentValue + 1;
+                        
+                        if (progressText.textContent.includes('/')) {
+                            const parts = progressText.textContent.split('/');
+                            progressText.textContent = `${currentValue + 1}/${parts[1]}`;
+                        }
+                        
+                        // Feedback visual
+                        this.innerHTML = '<i class="fas fa-check"></i> Registrado!';
+                        this.classList.add('tracked');
+                        
+                        setTimeout(() => {
+                            this.innerHTML = '<i class="fas fa-check"></i> Registrar';
+                            this.classList.remove('tracked');
+                        }, 2000);
+                    } else {
+                        Swal.fire({
+                            title: 'Meta atingida!',
+                            text: 'Você já completou sua meta para hoje. Parabéns!',
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                });
+            });
+
+            // Links do rodapé
+            document.getElementById('privacy-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Política de Privacidade',
+                    html: '<p>Nós valorizamos sua privacidade. Todas as suas informações pessoais são protegidas de acordo com nossa política.</p>',
+                    icon: 'info',
+                    confirmButtonText: 'Entendi'
+                });
+            });
+            
+            document.getElementById('terms-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Termos de Serviço',
+                    html: '<p>Ao usar o RoutineMaster, você concorda com nossos termos de serviço e condições de uso.</p>',
+                    icon: 'info',
+                    confirmButtonText: 'Entendi'
+                });
+            });
+            
+            document.getElementById('contact-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Contato',
+                    html: '<p>Entre em contato conosco pelo email: <strong>contato@routinemaster.com</strong></p>',
+                    icon: 'info',
+                    confirmButtonText: 'OK'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
