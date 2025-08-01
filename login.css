@@ -1,7 +1,7 @@
-/* Estilos Base */
+
 :root {
-    --primary-color: #FFD700; /* Amarelo */
-    --secondary-color: #FFFFFF; /* Branco */
+    --primary-color: #FFD700; 
+    --secondary-color: #FFFFFF;
     --text-color: #333333;
     --background-color: #FFFFFF;
     --card-color: #F8F9FA;
@@ -14,7 +14,7 @@
     --google-color: #DB4437;
 }
 
-/* Modo Escuro */
+
 .dark-mode {
     --primary-color: #555555;
     --secondary-color: #000000;
@@ -53,7 +53,7 @@ button {
     cursor: pointer;
 }
 
-/* Container de Login */
+
 .login-container {
     width: 100%;
     max-width: 500px;
@@ -62,7 +62,7 @@ button {
     gap: 2rem;
 }
 
-/* Card de Login */
+
 .login-card {
     background-color: var(--card-color);
     border-radius: 10px;
@@ -97,7 +97,7 @@ button {
     color: #AAAAAA;
 }
 
-/* Formulário */
+
 #login-form {
     display: flex;
     flex-direction: column;
@@ -142,7 +142,7 @@ button {
     color: #AAAAAA;
 }
 
-/* Opções do Formulário */
+
 .form-options {
     display: flex;
     justify-content: space-between;
@@ -166,7 +166,7 @@ button {
     text-decoration: underline;
 }
 
-/* Botões */
+
 .btn {
     padding: 0.75rem;
     border-radius: 5px;
@@ -201,7 +201,7 @@ button {
     box-shadow: 0 4px 8px var(--shadow-color);
 }
 
-/* Divisor */
+
 .login-divider {
     display: flex;
     align-items: center;
@@ -222,7 +222,7 @@ button {
     background-color: var(--border-color);
 }
 
-/* Link de Registro */
+
 .register-link {
     text-align: center;
     margin-top: 1rem;
@@ -242,7 +242,7 @@ button {
     text-decoration: underline;
 }
 
-/* Rodapé */
+
 .login-footer {
     text-align: center;
     color: #666;
@@ -269,7 +269,7 @@ button {
     text-decoration: underline;
 }
 
-/* Responsividade */
+
 @media (max-width: 480px) {
     .login-card {
         padding: 1.5rem;
