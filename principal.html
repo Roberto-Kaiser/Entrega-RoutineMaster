@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-    <!-- Barra de Navegação -->
+   
     <nav class="navbar">
         <div class="navbar-container">
             <a href="#" class="navbar-logo">
@@ -58,9 +58,9 @@
         </div>
     </nav>
 
-    <!-- Conteúdo Principal -->
+    
     <main class="main-content">
-        <!-- Seção de Hábitos -->
+        
         <section id="habits" class="page-section active-section">
             <header class="page-header">
                 <h1><i class="fas fa-list-check"></i> Meus Hábitos</h1>
@@ -70,7 +70,7 @@
             </header>
 
             <div class="habits-grid">
-                <!-- Hábito 1 -->
+                
                 <div class="habit-card">
                     <div class="habit-header">
                         <h3><i class="fas fa-glass-water"></i> Beber Água</h3>
@@ -97,7 +97,7 @@
                     </div>
                 </div>
 
-                <!-- Hábito 2 -->
+                
                 <div class="habit-card">
                     <div class="habit-header">
                         <h3><i class="fas fa-dumbbell"></i> Exercícios</h3>
@@ -124,7 +124,7 @@
                     </div>
                 </div>
 
-                <!-- Hábito 3 -->
+                
                 <div class="habit-card">
                     <div class="habit-header">
                         <h3><i class="fas fa-book"></i> Leitura</h3>
@@ -153,7 +153,7 @@
             </div>
         </section>
 
-        <!-- Seção de Estatísticas -->
+        
         <section id="stats" class="page-section">
             <header class="page-header">
                 <h1><i class="fas fa-chart-line"></i> Estatísticas</h1>
@@ -186,7 +186,7 @@
             </div>
         </section>
 
-        <!-- Seção de Metas -->
+        
         <section id="goals" class="page-section">
             <header class="page-header">
                 <h1><i class="fas fa-bullseye"></i> Metas</h1>
@@ -218,7 +218,7 @@
             </div>
         </section>
 
-        <!-- Seção de Perfil -->
+        
         <section id="profile" class="page-section">
             <header class="page-header">
                 <h1><i class="fas fa-user"></i> Perfil</h1>
@@ -256,7 +256,7 @@
             </div>
         </section>
 
-        <!-- Modal de Adicionar Hábito -->
+        
         <div class="modal" id="add-habit-modal">
             <div class="modal-content">
                 <span class="close-modal">&times;</span>
@@ -296,7 +296,7 @@
         </div>
     </main>
 
-    <!-- Rodapé -->
+    
     <footer class="footer">
         <div class="footer-content">
             <p>&copy; 2023 RoutineMaster. Todos os direitos reservados.</p>
@@ -309,9 +309,9 @@
     </footer>
 
     <script>
-        // JavaScript para funcionalidades do site
+        
         document.addEventListener('DOMContentLoaded', function() {
-            // Toggle do menu mobile
+            
             const navbarToggle = document.getElementById('navbar-toggle');
             const navbarMenu = document.getElementById('navbar-menu');
             
@@ -320,7 +320,7 @@
                 this.setAttribute('aria-expanded', navbarMenu.classList.contains('active'));
             });
 
-            // Navegação entre seções
+            
             const navLinks = document.querySelectorAll('.nav-link');
             const pageSections = document.querySelectorAll('.page-section');
             
@@ -328,18 +328,18 @@
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     
-                    // Remove a classe active de todos os links e seções
+                   
                     navLinks.forEach(l => l.classList.remove('active'));
                     pageSections.forEach(s => s.classList.remove('active-section'));
                     
-                    // Adiciona a classe active ao link clicado
+                    
                     this.classList.add('active');
                     
-                    // Mostra a seção correspondente
+                    
                     const targetId = this.getAttribute('href');
                     document.querySelector(targetId).classList.add('active-section');
                     
-                    // Fecha o menu mobile se estiver aberto
+                    
                     if (navbarMenu.classList.contains('active')) {
                         navbarMenu.classList.remove('active');
                         navbarToggle.setAttribute('aria-expanded', 'false');
@@ -347,14 +347,14 @@
                 });
             });
 
-            // Toggle do modo escuro
+            
             const darkModeToggle = document.getElementById('dark-mode-toggle');
             
             darkModeToggle.addEventListener('click', function() {
                 document.body.classList.toggle('dark-mode');
                 localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
                 
-                // Atualiza o ícone e texto do botão
+                
                 const icon = this.querySelector('i');
                 const text = this.querySelector('span');
                 
@@ -369,7 +369,7 @@
                 }
             });
 
-            // Verifica preferência de modo escuro salva
+            
             if (localStorage.getItem('darkMode') === 'true') {
                 document.body.classList.add('dark-mode');
                 const icon = darkModeToggle.querySelector('i');
@@ -379,7 +379,7 @@
                 text.textContent = "Modo Claro";
             }
 
-            // Modal de adicionar hábito
+            
             const addHabitBtn = document.getElementById('add-habit-btn');
             const addHabitModal = document.getElementById('add-habit-modal');
             const closeModalBtns = document.querySelectorAll('.close-modal');
@@ -400,7 +400,7 @@
                 }
             });
 
-            // Formulário de hábito
+            
             const habitForm = document.getElementById('habit-form');
             habitForm.addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -409,7 +409,7 @@
                 const habitFrequency = document.getElementById('habit-frequency').value;
                 const habitTarget = document.getElementById('habit-target').value;
                 
-                // Validação simples
+                
                 if (!habitName || !habitFrequency || !habitTarget) {
                     Swal.fire({
                         title: 'Campos obrigatórios',
@@ -420,7 +420,7 @@
                     return;
                 }
                 
-                // Feedback de sucesso
+                
                 Swal.fire({
                     title: 'Hábito adicionado!',
                     text: `"${habitName}" foi adicionado aos seus hábitos.`,
@@ -428,12 +428,12 @@
                     confirmButtonText: 'OK'
                 });
                 
-                // Fechar modal e resetar formulário
+                
                 addHabitModal.style.display = 'none';
                 habitForm.reset();
             });
 
-            // Botões de deletar hábito
+            
             const deleteButtons = document.querySelectorAll('.btn-delete');
             deleteButtons.forEach(button => {
                 button.addEventListener('click', function() {
@@ -462,7 +462,7 @@
                 });
             });
 
-            // Botões de registrar hábito
+            
             const trackButtons = document.querySelectorAll('.btn-track');
             trackButtons.forEach(button => {
                 button.addEventListener('click', function() {
@@ -481,7 +481,7 @@
                             progressText.textContent = `${currentValue + 1}/${parts[1]}`;
                         }
                         
-                        // Feedback visual
+                        
                         this.innerHTML = '<i class="fas fa-check"></i> Registrado!';
                         this.classList.add('tracked');
                         
@@ -500,7 +500,7 @@
                 });
             });
 
-            // Links do rodapé
+            
             document.getElementById('privacy-link').addEventListener('click', function(e) {
                 e.preventDefault();
                 Swal.fire({
