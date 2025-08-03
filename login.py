@@ -1,9 +1,9 @@
 usuarios = {
-    "admin@email.com": "admin123",
-    "usuario@email.com": "senha123"
+    "Betinho@gmail.com": "betinho123",
+    "usuario@gmail.com": "senha123"
 }
 
-print("=== LOGIN ===")
+print("LOGIN:")
 email = input("Email: ")
 senha = input("Senha: ")
 
